@@ -8,15 +8,12 @@
             text-decoration: none;
             color: black;
         }
-
         body {
             text-align: center;
         }
-
         ul {
             list-style: none;
         }
-
     </style>
 
 </head>
@@ -26,9 +23,7 @@
 
     <ul>
         <% todolist.forEach(function(todo,index){ %>
-
         <li> <a href="/todo/delete/<%= index%>">✘ </a><%=todo%></li>
-
         <% });%>
 
     </ul>

@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
+var generator = require('generate-password');
 
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({
@@ -12,12 +13,17 @@ var urlencodedParser = bodyParser.urlencoded({
 
 //Use sessions.
 app.use(session({
-        secret: "c?144",
+        secret: generator.generate({
+            length: 15,
+            numbers: true
+            
+        })
+    
     }))
 
 
     /* On affiche la todolist et le formulaire */
-    .get('/todo', function (req, res) {
+    app.get('/todo', function (req, res) {
         res.render('todo-list.ejs', {
             todolist: req.session.todolist
         });
